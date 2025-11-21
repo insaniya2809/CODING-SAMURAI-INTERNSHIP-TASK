@@ -8,6 +8,8 @@ from sklearn.model_selection import train_test_split, KFold, cross_val_score
 from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import joblib
+import os
+os.makedirs("model", exist_ok=True)
 
 
 np.random.seed(42)
@@ -104,4 +106,8 @@ print("Average R² =", cv_scores.mean())
 
 
 joblib.dump(model, "model/linear_regression_model.joblib")
-print("\n✅ Model saved to model/linear_regression_model.joblib")
+
+print("Model saved successfully!")
+
+loaded_model = joblib.load("model/linear_regression_model.joblib")
+print("Model loaded successfully!")
